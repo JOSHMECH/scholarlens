@@ -80,100 +80,90 @@
     <div class="results-top animate-slide-up delay-3">
 
       <!-- LEFT: Gauge card -->
-      <div class="card" style="padding:0;overflow:hidden;">
-        <div style="background:var(--bg2);border-bottom:1px solid var(--border);
-          padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-weight:700;font-size:.9375rem;">CGPA Prediction</span>
+      <div class="card" style="padding:0;overflow:hidden;border:none;box-shadow:var(--shadow-lg);background:linear-gradient(to bottom, var(--bg2), var(--card-bg));">
+        <div style="padding:24px 28px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;">CGPA Prediction</span>
+          </div>
           <span class="badge badge-blue" id="scale-badge">5.0 Scale</span>
         </div>
-        <div class="gauge-outer">
-          <!-- SVG gauge rendered by JS -->
+        <div class="gauge-outer" style="margin-top:8px;">
           <div class="gauge-svg-wrap" id="gauge-container"></div>
-          <!-- Zone legend -->
-          <div class="gauge-legend" id="gauge-legend"></div>
+          <div class="gauge-legend" id="gauge-legend" style="margin-top:-5px;margin-bottom:20px;justify-content:center;"></div>
         </div>
 
-        <!-- Risk level -->
-        <div style="padding:16px 20px;border-top:1px solid var(--border);text-align:center;">
-          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;
-            letter-spacing:.06em;color:var(--text-muted);margin-bottom:8px;">Risk Level</div>
+        <div style="padding:22px 28px;border-top:1px solid rgba(150,150,150,0.1);text-align:center;background:var(--bg2);">
           <div id="risk-badge-wrap"></div>
-          <div style="font-size:.8rem;color:var(--text-muted);margin-top:8px;" id="risk-desc"></div>
+          <div style="font-size:.85rem;color:var(--text-muted);margin-top:10px;line-height:1.4;" id="risk-desc"></div>
         </div>
       </div>
 
       <!-- RIGHT: Gap analysis + inputs summary + recs -->
-      <div style="display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
 
         <!-- Gap analysis bars -->
-        <div class="card" style="padding:22px;">
-          <div style="font-weight:700;font-size:.9375rem;margin-bottom:18px;display:flex;align-items:center;gap:8px;">Gap Analysis</div>
-          <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="card" style="padding:28px;border:none;box-shadow:var(--shadow-md);">
+          <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:8px;">Gap Analysis</div>
+          <div style="display:flex;flex-direction:column;gap:18px;">
             <div class="progress-wrap">
               <div class="progress-header">
-                <span class="progress-label">Current CGPA</span>
-                <span class="progress-value" id="ga-current">—</span>
+                <span class="progress-label" style="font-size:.85rem;">Current CGPA</span>
+                <span class="progress-value" id="ga-current" style="font-size:1rem;">—</span>
               </div>
-              <div class="progress-track"><div class="progress-fill" id="ga-current-bar" style="width:0;"></div></div>
+              <div class="progress-track" style="height:8px;"><div class="progress-fill" id="ga-current-bar" style="width:0;background:var(--neutral-400);"></div></div>
             </div>
             <div class="progress-wrap">
               <div class="progress-header">
-                <span class="progress-label">Predicted CGPA</span>
-                <span class="progress-value" id="ga-predicted">—</span>
+                <span class="progress-label" style="font-size:.85rem;">Predicted CGPA</span>
+                <span class="progress-value" id="ga-predicted" style="font-size:1rem;">—</span>
               </div>
-              <div class="progress-track"><div class="progress-fill" id="ga-pred-bar" style="width:0;"></div></div>
+              <div class="progress-track" style="height:8px;"><div class="progress-fill" id="ga-pred-bar" style="width:0;"></div></div>
             </div>
             <div class="progress-wrap">
               <div class="progress-header">
-                <span class="progress-label">Target CGPA</span>
-                <span class="progress-value" id="ga-target">—</span>
+                <span class="progress-label" style="font-size:.85rem;">Target CGPA</span>
+                <span class="progress-value" id="ga-target" style="font-size:1rem;">—</span>
               </div>
-              <div class="progress-track"><div class="progress-fill" id="ga-target-bar" style="width:0;background:linear-gradient(90deg,#a1a1aa,#d4d4d8);"></div></div>
+              <div class="progress-track" style="height:8px;"><div class="progress-fill" id="ga-target-bar" style="width:0;background:linear-gradient(90deg,#a1a1aa,#d4d4d8);"></div></div>
             </div>
           </div>
-          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
-            display:flex;justify-content:space-between;align-items:center;">
+          <div style="margin-top:24px;padding-top:18px;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;">
             <span class="text-sm text-muted font-medium">Gap to target</span>
-            <span id="ga-gap" style="font-weight:700;font-size:1.125rem;"></span>
+            <span id="ga-gap" style="font-weight:700;font-size:1.25rem;"></span>
           </div>
         </div>
 
-        <!-- Input summary row -->
-        <div class="card" style="padding:18px;">
-          <div style="font-weight:700;font-size:.875rem;margin-bottom:12px;display:flex;align-items:center;gap:6px;">Your Inputs Summary</div>
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;" id="input-summary"></div>
+        <div class="card" style="padding:24px;border:none;box-shadow:var(--shadow-md);">
+          <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Inputs Summary</div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;" id="input-summary"></div>
         </div>
 
-        <!-- Recommendations -->
-        <div class="card">
-          <div style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;
-            margin-bottom:18px;display:flex;align-items:center;gap:8px;">Your Action Plan</div>
-          <div style="display:flex;flex-direction:column;gap:10px;" id="recs-list"></div>
+        <div class="card" style="padding:28px;border:none;box-shadow:var(--shadow-md);">
+          <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;">Your Action Plan</div>
+          <div style="display:flex;flex-direction:column;gap:12px;" id="recs-list"></div>
         </div>
       </div>
     </div>
 
     <!-- ════ SMART TIMETABLE ════ -->
-    <div class="card animate-slide-up delay-4" id="timetable-section" style="display:none;margin-top:24px;padding:0;overflow:hidden;">
-      <div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:18px 22px;">
-        <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:4px;">
-          Smart Weekly Study Timetable
+    <div class="card animate-slide-up delay-4" id="timetable-section" style="display:none;margin-top:32px;padding:32px;border:none;box-shadow:var(--shadow-md);">
+      <div style="margin-bottom:24px;">
+        <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:6px;">
+          Smart Study Timetable
         </div>
-        <div style="font-size:.8rem;color:var(--text-muted);">
-          Auto-generated from your courses, commute, and schedule constraints. Study blocks avoid your class days.
+        <div style="font-size:.85rem;color:var(--text-muted);font-weight:500;">
+          Auto-generated weekly schedule factoring in your courses, commute, and personal availability.
         </div>
       </div>
-      <div style="padding:20px;">
-        <div class="timetable-wrap">
-          <div class="timetable" id="timetable-grid"></div>
-        </div>
-        <!-- Legend -->
-        <div class="tt-legend" id="tt-legend"></div>
-        <!-- Info note -->
-        <div class="alert alert-success" style="margin-top:14px;font-size:.8125rem;">
-          <span class="alert-icon"></span>
-          <span>Study blocks are placed on days <strong>different from</strong> your class days. Morning commute and work slots are reserved. Adjust your course class days in the wizard to regenerate.</span>
-        </div>
+      <div class="timetable-wrap" style="border-radius:12px;border:1px solid rgba(150,150,150,0.15);overflow:hidden;background:var(--bg2);">
+         <div class="timetable" id="timetable-grid" style="border:none;"></div>
+      </div>
+      <!-- Legend -->
+      <div class="tt-legend" id="tt-legend" style="margin-top:20px;padding:0 8px;"></div>
+      <!-- Info note -->
+      <div class="alert alert-success" style="margin-top:24px;font-size:.85rem;border-radius:10px;background:var(--bg2);border:1px dashed var(--green-400);">
+        <span class="alert-icon"></span>
+        <span>Blocks are carefully nested around class days to maximize retention. Deep work is prioritized earlier in available free windows.</span>
       </div>
     </div>
 
@@ -416,45 +406,56 @@ function renderTimetable(grid, courses) {
   const hours = Array.from({length:SLOTS},(_,i)=>START_HR+i);
 
   // Header row
-  tt.innerHTML = `<div class="tt-corner">TIME</div>
-    ${DAYS_ALL.map(d=>`<div class="tt-day-header ${d==='Sat'||d==='Sun'?'weekend':''}">${d}</div>`).join('')}`;
+  tt.innerHTML = `<div class="tt-corner" style="border-bottom:2px solid var(--border);background:transparent;">TIME</div>
+    ${DAYS_ALL.map(d=>`<div class="tt-day-header ${d==='Sat'||d==='Sun'?'weekend':''}" style="border-bottom:2px solid var(--border);background:transparent;">${d}</div>`).join('')}`;
 
   // Time rows
   hours.forEach((hr,si) => {
     const timeLabel = hr>=12 ? `${hr===12?12:hr-12}pm` : `${hr}am`;
-    tt.innerHTML += `<div class="tt-time">${timeLabel}</div>
+    tt.innerHTML += `<div class="tt-time" style="background:transparent;border-right:1px dashed var(--border);">${timeLabel}</div>
       ${DAYS_ALL.map(day => {
         const cell = grid[day][si];
+        // Ensure background is transparent so the dashboard grid looks breathable
+        const cellFrame = `<div class="tt-cell" style="background:transparent; border-right:1px dashed var(--border); border-bottom:1px dashed var(--border); position:relative; padding:3px;">`;
+        const endFrame = `</div>`;
+        
         if (cell.type==='study') {
-          return `<div class="tt-cell study-block"
-            style="background:${cell.color.bg};border-left:3px solid ${cell.color.border};
-                   color:${cell.color.text};"
-            title="${cell.label} — Study Block">
-            <span class="tt-cell-label">${cell.label}</span>
-          </div>`;
+          return `${cellFrame}
+            <div style="position:absolute; inset:3px; background:${cell.color.bg}; border-left:3px solid ${cell.color.border}; color:${cell.color.text}; border-radius:6px; display:flex; align-items:center; justify-content:center; overflow:hidden;" title="${cell.label} — Study Block">
+              <span class="tt-cell-label" style="white-space:nowrap; text-overflow:ellipsis; overflow:hidden; padding:0 4px;">${cell.label}</span>
+            </div>
+          ${endFrame}`;
         }
         if (cell.type==='commute') {
-          return `<div class="tt-cell commute-block" title="Commute">
-            <span class="tt-cell-label" style="font-size:.58rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span></div>`;
+          return `${cellFrame}
+            <div style="position:absolute; inset:3px; background:rgba(202,138,4,0.1); border-left:3px solid #ca8a04; color:var(--text-muted); border-radius:6px; display:flex; align-items:center; justify-content:center;" title="Commute">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+          ${endFrame}`;
         }
         if (cell.type==='work') {
-          return `<div class="tt-cell work-block" title="Work / Extracurricular">
-            <span class="tt-cell-label" style="font-size:.58rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span></div>`;
+          return `${cellFrame}
+            <div style="position:absolute; inset:3px; background:rgba(2,132,199,0.1); border-left:3px solid #0284c7; color:var(--text-muted); border-radius:6px; display:flex; align-items:center; justify-content:center;" title="Work / Extracurricular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+          ${endFrame}`;
         }
         if (cell.type==='sleep') {
-          return `<div class="tt-cell sleep-block" title="Rest time">
-            <span class="tt-cell-label" style="font-size:.58rem;color:#94a3b8;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></span></div>`;
+          return `${cellFrame}
+            <div style="position:absolute; inset:3px; background:rgba(148,163,184,0.08); border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--neutral-400);" title="Rest time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6;"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+            </div>
+          ${endFrame}`;
         }
-        return `<div class="tt-cell free-block"></div>`;
+        return `${cellFrame}${endFrame}`;
       }).join('')}`;
   });
 
   // Legend
   const legendEl = document.getElementById('tt-legend');
   const legendItems = [
-    {bg:'#fef9c3',border:'#ca8a04',text:'#78350f',label:'Commute'},
-    {bg:'#e0f2fe',border:'#0284c7',text:'#0c4a6e',label:'Work/Extra'},
-    {bg:'var(--card-bg)',border:'var(--border)',text:'var(--text-muted)',label:'Free Slot'},
+    {bg:'rgba(202,138,4,0.1)',border:'#ca8a04',text:'var(--text-muted)',label:'Commute'},
+    {bg:'rgba(2,132,199,0.1)',border:'#0284c7',text:'var(--text-muted)',label:'Work/Extra'},
   ];
   const courseItems = courses
     .filter(c=>c.difficulty>=2)
@@ -466,8 +467,8 @@ function renderTimetable(grid, courses) {
 
   legendEl.innerHTML = [...courseItems, ...legendItems].map(item=>`
     <div class="tt-legend-item">
-      <div class="tt-legend-swatch" style="background:${item.bg};border-left-color:${item.border};"></div>
-      <span style="color:var(--text-muted);">${item.label}</span>
+      <div class="tt-legend-swatch" style="background:${item.bg};border-left-color:${item.border}; border-radius:3px;"></div>
+      <span style="color:var(--text-muted); font-size:.85rem; font-weight:600;">${item.label}</span>
     </div>`).join('');
 }
 
@@ -571,11 +572,16 @@ function renderTimetable(grid, courses) {
     document.getElementById('ga-pred-bar').className = `progress-fill ${predColor}`;
   }, 350);
   const gapEl  = document.getElementById('ga-gap');
-  const gapVal = input.target_cgpa - predicted_cgpa;
-  gapEl.textContent = gapVal <= 0
-    ? `+${Math.abs(gapVal).toFixed(2)} above target <svg style="vertical-align:middle;margin-left:4px" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
-    : `${gapVal.toFixed(2)} below target`;
-  gapEl.style.color = gapVal<=0 ? 'var(--green-600)' : gapVal<=0.3 ? 'var(--amber-500)' : 'var(--red-500)';
+  let gapVal = input.target_cgpa - predicted_cgpa;
+  if (Math.abs(gapVal) < 0.01) gapVal = 0; // Fix negative zero rendering
+  
+  if (gapVal <= 0) {
+    gapEl.innerHTML = `<span style="display:flex;align-items:center;gap:6px;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Target achieved</span>`;
+    gapEl.style.color = 'var(--green-600)';
+  } else {
+    gapEl.textContent = `${gapVal.toFixed(2)} below target`;
+    gapEl.style.color = gapVal<=0.3 ? 'var(--amber-500)' : 'var(--red-500)';
+  }
 
   // ── INPUT SUMMARY ────────────────────────────────────────
   const summaryItems = [

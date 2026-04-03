@@ -146,9 +146,10 @@ const Toast = {
       setTimeout(() => toast.remove(), 350);
     }, duration);
   },
-  success(msg, d) { this.show(msg, 'success', d); },
-  error(msg, d)   { this.show(msg, 'error', d); },
-  warning(msg, d) { this.show(msg, 'warning', d); },
+  success(msg, duration) { this.show(msg, 'success', duration); },
+  error(msg, duration)   { this.show(msg, 'error', duration); },
+  warning(msg, duration) { this.show(msg, 'warning', duration); },
+  info(msg, duration)    { this.show(msg, 'default', duration); }
 };
 
 // ── THEME TOGGLE ─────────────────────────────────────────────

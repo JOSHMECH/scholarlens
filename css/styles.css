@@ -348,6 +348,7 @@ h1, h2, h3 { line-height: 1.25; }
 @keyframes shimmer {
   0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; }
 }
+.progress-fill.green { background: linear-gradient(90deg, var(--green-500), var(--green-400)); }
 .progress-fill.amber { background: linear-gradient(90deg, var(--amber-500), var(--amber-400)); }
 .progress-fill.red   { background: linear-gradient(90deg, var(--red-500), var(--red-400)); }
 
